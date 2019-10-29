@@ -1,0 +1,57 @@
+
+Subject: Re: Using Distillation Column Model in Inferentials Course
+
+
+Use of temperature measurements to estimate compositions should work fine -
+actually without any need to know thermo - just using PLS or similar to
+regress steady-state data from simulations or from the real plant.
+
+We have used this on theoretical data on a pilot-plant column and on a
+real column. 
+
+Please see these references:
+
+
+1. @ARTICLE{mejdell:91,
+          author  =      "Mejdell, T. and Skogestad, S.",
+          title   =      "Estimators for Ill-Conditioned Plants:
+                  High-Purity Distillation",
+          journal =      "Preprints ADCHEM '91",
+          year    =      1991,
+          pages   =       403-408,
+          annote  =       {Estimation, Distillation columns,
+                   Large-scale systems, Data reduction, Kalman filters,
+                   Inferential control, Multivariate calibration, Input
+                   uncertainty, Robust control, Temperature control}
+
+2.
+@ARTICLE{mejdell:93-1,
+          author  =      "Mejdell, T. and Skogestad, S.",
+          title   =      "Output Estimation Using Multiple Secondary
+                  Measurements: High-Purity Distillation",
+          author  =      "AIChE Journal",
+          year    =      1993,
+          pages   =      1641-1653
+}
+
+3. \item T. Mejdell and S. Skogestad, ``Estimation of Distillation Compositions
+from Multiple Temperature Measurements using Partial-Least-Squares
+Regression'', {\it Ind. Eng. Chem. Res.}, {\bf 30}, 12 , 2543-2555 (1991).
+
+4. \item T. Mejdell and S. Skogestad, ``Composition Estimator in a Pilot Plant
+Distillation Column using Multiple Temperatures'', {\it Ind. Eng. Chem. Res.},
+{\bf 30}, 12, 2555-2564 (1991).
+
+5.
+@Article{mejdell:94,
+   author =      {Mejdell, T. and Andersson, B-O.},
+   title =       {Using Temperature Profile for Product Quality
+                   Estimation on a Distillation Column},
+   journal =     {Reprinted from ISA Transactions},
+   year =        1994,
+   volume =      33,
+   pages =       {27-34},
+   annote  =      {Estimation, Chemometrics, Process control,
+                   Distillation column}  
+}
+

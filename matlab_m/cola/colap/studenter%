@@ -1,0 +1,607 @@
+From erikmi@stud.unit.no Wed Dec 03 17:47:35 1997
+Return-Path: <erikmi@stud.unit.no>
+Delivered-To: skoge@chembio.ntnu.no
+Received: (qmail 22238 invoked by alias); 3 Dec 1997 17:47:34 -0000
+Delivered-To: Sigurd.Skogestad@chembio.ntnu.no
+Received: (qmail 22226 invoked from network); 3 Dec 1997 17:47:32 -0000
+Received: from biff.stud.ntnu.no (129.241.56.18)
+  by senja.chembio.ntnu.no with SMTP; 3 Dec 1997 17:47:32 -0000
+Received: from ild.stud.ntnu.no (ild.stud.ntnu.no [129.241.56.15])
+	by biff.stud.ntnu.no (8.8.8/8.8.8) with ESMTP id SAA01773;
+	Wed, 3 Dec 1997 18:47:32 +0100 (MET)
+Received: from ild.stud.ntnu.no (localhost [127.0.0.1])
+	by ild.stud.ntnu.no (8.8.8/8.8.8) with SMTP id SAA26906;
+	Wed, 3 Dec 1997 18:47:32 +0100 (MET)
+Sender: erikmi@stud.ntnu.no
+Message-ID: <34859B34.1034@stud.unit.no>
+Date: Wed, 03 Dec 1997 18:47:32 +0100
+From: Erik Mikkelsen <erikmi@stud.ntnu.no>
+X-Mailer: Mozilla 3.04 (X11; I; SunOS 5.5.1 sun4u)
+MIME-Version: 1.0
+To: Sigurd.Skogestad@chembio.ntnu.no
+CC: truls.larsson@chembio.ntnu.no
+Subject: Prosjekt (kolonne A) Hoest 1997
+Content-Type: multipart/mixed; boundary="------------6A2B37CFBAA"
+Status: R
+Content-Length: 19366
+
+This is a multi-part message in MIME format.
+
+--------------6A2B37CFBAA
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Hei!
+
+Sender deg filene til kjoering av destillasjonskolonnen.
+
+
+Hilsen
+Erik M m.fl.
+
+--------------6A2B37CFBAA
+Content-Type: text/plain; charset=us-ascii; name="cola4p.m"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline; filename="cola4p.m"
+
+function xprime=cola4p(t,X) 
+% sample usage:   [t,x]=ode15s('cola4p',[0 5000],Xinit);
+%
+% cola4p  - Subroutine for simulation using MATLAB integration routine
+%           It calls the distillation model colamodp 
+%
+%            SYNTAX: [t,x]=ode15s('cola4p',tspan,Xinit);
+%
+%            tspan -   [t_start,t_stop]
+%            Xinit -   column vector containing initial liquid composition
+%                      for stages 1-NT and initial liquid hold up for stages
+%                      1-NT.
+%
+%            Disturbances are feedrate, feed composition and feed liquid fraction
+%            These are set by directly altering 'cola4p.m'.
+
+
+% Number of stages in column
+
+NT=41;
+
+
+% Feed	
+
+F  = 1.0;				% Feedrate (kmol/min)
+zF = 0.5;				% Feed composition light comp.
+qF = 1.0;				% Feed liquid fraction
+
+
+% Termodynamic data			
+
+TBL= 272.65;				% Boilingpoint light comp.(K)
+TBH= 309.25;				% Boilingpoint heavy comp.(K)
+CpL=96;					% Heatcapasity light comp. (kJ/kmol*K)
+CpH=121;				% Heatcapasity heavy comp. (kJ/kmol*K)
+HvapL=19575;				% Hvap for light comp. (kJ/kmol)
+HvapH=28350;				% Hvap for heavy comp. (kJ/kmol)
+p0L=1.013e5;				% Vapor pressure of pure light liquid comp.(Pa)
+p0H=1.013e5;				% Vapor pressure of pure heavy liquid comp.(Pa)
+R=8.314;				% Universal gasconstant (kJ/kmol*K)
+
+
+% Get actual values
+
+xD=X(NT);xB=X(1);			% Actual composition in reboiler and condenser
+MB=X(NT+1);  MD=X(2*NT); 		% Actual reboiler and condenser holdup
+TD=X(3*NT);				% Actual temperature in reboiler
+
+
+% Calculates the right top pressure for cooling control
+
+pL= p0L*exp(-HvapL/R*(1/TD-1/TBL));
+pH= p0H*exp(-HvapH/R*(1/TD-1/TBH));
+p = xD*pL + (1-xD)*pH;
+
+
+% P-Controllers for control of reboiler, condenser hold up and condenser cooling
+
+% Setpoints
+
+xDs=0.99; 				% Composition top
+xBs=0.01;				% Composition bottom
+ps=1.013e5;				% Pressure in condenser (Pa)
+
+
+% Bias values and controller gains
+
+KcB=7;KcD=7; KcP=10;KcXB=50;KcXD=33;	% Controller gains
+MDs=0.7; MBs=0.7;			% Holdups  
+D0=0.5; B0=0.5;				% Flow (kmol/min)
+LT0=2.70629; VB0=3.20629;		% Reflux and boilup
+VD0 = VB0;				% Condensation heat(kJ/min)
+
+
+% P-Controllers
+
+D=D0+(MD-MDs)/MDs*KcD;			% Distillate flow
+B=B0+(MB-MBs)/MBs*KcB;			% Bottoms flow     
+VD=VD0+((p-ps)/ps)*KcP;			% Pressure
+LT=LT0-(xD-xDs)/xDs*KcXD;		% Destillat
+VB=VB0+(xB-xBs)/xBs*KcXB;		% Bottoms		
+
+
+% Store all inputs and disturbances
+
+U(1)=LT; U(2)=VB; U(3)=D; U(4)=B; U(5)=VD; U(6)=F; U(7)=zF; U(8)=qF; U(9)=TBL;
+U(10)=TBH; U(11)=CpL; U(12)=CpH; U(13)=HvapL; U(14)=HvapH; U(15)=p0L; U(16)=p0H;
+U=U(:);
+
+
+xprime=colamodp(t,X,U);
+
+
+--------------6A2B37CFBAA
+Content-Type: text/plain; charset=us-ascii; name="colamodp.m"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline; filename="colamodp.m"
+
+function xprime=colamodp(t,X,U) 
+%
+% Written by S. Skogestad, L. Westskogen, E. Mikkelsen and S. Helland
+% November 1997
+%
+% colamodp - included pressure variations
+%           This is a nonlinear model of a distillation column with
+%           NT-1 theoretical stages including a reboiler (stage 1) plus a
+%           total condenser ("stage" NT). The liquid flow dynamics are
+%           modelled by a simple linear relationship.
+%           Model assumptions: Two components (binary separation); constant
+%           relative volatility; no vapor holdup; one feed and two products;
+%           constant molar flows (same vapor flow on all stages); 
+%           total condenser
+%
+%           The model is based on column A in Skogestad and Postlethwaite
+%           (1996). The model has 3x41 states.
+%
+% Inputs:    t    - time in [min].
+%            X    - State, the first 41 states are compositions of light
+%                   component A with reboiler/bottom stage as X(1) and 
+%                   condenser as X(41). State X(42)is holdup in reboiler/
+%                   bottom stage and X(82) is hold-up in condenser. 
+%                   states x(83) and on are temperatures
+%            U(1) - reflux L,
+%            U(2) - boilup V,
+%            U(3) - top or distillate product flow D,
+%            U(4) - bottom product flow B,
+%            U(5) - flow condensated, VD, 
+%	     U(6) - feed rate F,
+%            U(7) - feed composition light comp., zF.
+%            U(8) - feed liquid fraction, qF.
+%	     U(9) - boilingpoint light comp. ,THL,
+%	     U(10)- boilingpoint heavy comp. ,TBH,
+%	     U(11)- Cp light comp., CpL,
+%	     U(12)- Cp heavy comp., CpH,
+%	     U(13)- Hvap for light comp., HvapL,
+%	     U(14)- Hvap for heavy comp., HvapH,
+%	     U(15)- Vapor pressure of pure light liquid comp., p0L,
+%	     U(16)- Vapor pressure of pure heavy liquid comp., p0H,
+%
+%
+% Outputs:   xprime - vector with time derivative of all the states 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%------------------------------------------------------------
+% The following data need to be changed for a new column.
+% These data are for "column A".
+% Hvap and Cp given in cola4p.m are also data for "column A", and need to be changed.
+
+
+NT=41;					% Number of stages (including reboiler and total condenser)
+NF=21;					% Location of feed stage (stages are counted from the bottom)
+alpha=1.5;				% Relative volatility
+
+M0(1)=0.5;         			% Nominal reboiler holdup (kmol)
+i=2:NT-1; M0(i)=0.5*ones(1,NT-2);	% Nominal stage (tray) holdups (kmol)
+M0(NT)=0.5;	         		% Nominal condenser holdup (kmol)
+
+
+% Data for linearized liquid flow dynamics (does not apply to reboiler and condenser):
+
+R=8.314;				% Universal gasconstant (kJ/kmol*K)
+taul=0.063;				% Time constant for liquid dynamics (min)
+F0=1.0;					% Nominal feed rate (kmol/min) 
+qF0 = 1.0;				% Nominal fraction of liquid in feed 
+L0=2.70629;				% Nominal reflux flow (from steady-state data)
+L0b=L0 + qF0*F0;			% Nominal liquid flow below feed (kmol/min)
+lambda=0;				% Effect of vapor flow on liquid flow ("K2-effect")
+V0=3.20629;V0t=V0+(1-qF0)*F0;		% Nominal vapor flows - only needed if lambda is nonzero 
+k=2.4288e-4;				% Valve equation constant
+
+
+% End data which need to be changed
+%------------------------------------------------------------
+
+
+% Splitting the states
+
+x=X(1:NT)';				% Liquid composition from btm to top
+M=X(NT+1:2*NT)';			% Liquid hold up from btm to top
+T=X(2*NT+1:3*NT)';			% Temperatures
+
+
+% Inputs and disturbances
+
+LT 	= U(1);                       	% Reflux
+VB 	= U(2);                       	% Boilup
+D  	= U(3);                       	% Distillate
+B  	= U(4);                       	% Bottoms
+VD 	= U(5);			      	% Condensation heat and cooling	
+F  	= U(6);                       	% Feedrate
+zF 	= U(7);                       	% Feed composition light comp.
+qF 	= U(8);                       	% Feed liquid fraction
+TBL	= U(9);		       	      	% Boilingpoint light comp.
+TBH	= U(10); 		      	% Boilingpoint heavy comp.
+CpL 	= U(11);		      	% Cp for light comp
+CpH 	= U(12);		      	% Cp for heavy comp
+HvapL	= U(13);		      	% Hvap for light comp.
+HvapH	= U(14);		      	% Hvap for heavy comp.	 
+p0L	= U(15);		      	% Vapor pressure of pure light liquid comp.(Pa)
+p0H	= U(16); 	  	      	% Vapor pressure of pure heavy liquid comp.(Pa)
+
+
+% Assume linearity between Havp, Cp and composition
+
+Cp   = zF*CpL + (1-zF)*CpH;	      % Heatcapasity for feed
+Hvap = zF*HvapL + (1-zF)*HvapH;	      % Heat of vaporization for feed
+
+
+% THE MODEL
+
+
+% Vapor-liquid equilibria
+
+i=1:NT-1;   
+y(i)=alpha*x(i)./(1+(alpha-1)*x(i));
+
+
+% Vapor pressures of the two components (Clausius-Clapeyron)
+
+i=1:NT;
+pL(i)= p0L*exp(-HvapL/R*(1./T(i)-1/TBL));
+pH(i)= p0H*exp(-HvapH/R*(1./T(i)-1/TBH));
+
+
+% Stage Pressure (Raoults law)
+
+i=1:NT;  
+p(i) = x(i).*pL(i) + (1-x(i)).*pH(i);
+
+
+% Vapor flows (valve equation)
+
+i=1:NT-1;
+if (p(i+1)-p(i))<0
+  V(i) = k*sqrt(p(i).^2-p(i+1).^2);
+else;
+  V(i) =0.1*VB;
+end;  
+
+
+% Liquid flows assuming linearized tray hydraulics with time constant taul
+% Also includes coefficient lambda for effect of vapor flow ("K2-effect").
+
+i=2:NF;      
+L(i) = L0b + (M(i)-M0(i))./taul + lambda.*(V(i-1)-V0);
+
+i=NF+1:NT-1; 
+L(i) = L0  + (M(i)-M0(i))./taul + lambda.*(V(i-1)-V0t);
+L(NT)=LT;
+
+
+% Time derivatives from  material balances for 
+% 1) total holdup 
+% 2) component holdup
+% 3) enrgy holdup (temperature)
+
+
+% Column
+
+i=2:NT-1;
+dMdt(i) = L(i+1)         - L(i)       + V(i-1)         - V(i);
+dMxdt(i)= L(i+1).*x(i+1) - L(i).*x(i) + V(i-1).*y(i-1) - V(i).*y(i);
+
+
+% Assume cPL=cpV and assume: hL=cp*T; hV = cp*T + Hvap
+% Define:
+ch = Hvap/Cp;
+MdTdt(i) = L(i+1).*(T(i+1)-T(i)) + V(i-1).*(ch + T(i-1)-T(i)) - V(i)*ch;
+
+
+% Correction for feed at the feed stage
+% The feed is assumed to be mixed into the feed stage
+
+dMdt(NF) = dMdt(NF)  + F;
+dMxdt(NF)= dMxdt(NF) + F*zF;
+MdTdt(NF)= MdTdt(NF) + F*(1-qF)*ch; 
+
+
+% Reboiler (assumed to be an equilibrium stage)
+
+dMdt(1) = L(2)      - V(1)      - B;
+dMxdt(1)= L(2).*x(2) - V(1).*y(1) - B.*x(1);
+MdTdt(1)= L(2).*(T(2)-T(1)) +  (VB-V(1)).*ch; 
+
+
+% Total condenser (no equilibrium stage)
+
+dMdt(NT) = V(NT-1)         - LT       - D;
+dMxdt(NT)= V(NT-1).*y(NT-1) - LT.*x(NT) - D.*x(NT);
+
+% QD = VD*Hvap 
+
+MdTdt(NT)=V(NT-1).*(T(NT-1)-T(NT))+(V(NT-1)-VD)*ch;
+
+
+% Compute the derivative for the mole fractions from d(Mx) = x dM + M dx
+
+i=1:NT;   dxdt(i) = (dMxdt(i) - x(i).*dMdt(i) )./M(i);
+i=1:NT;   dTdt(i) = MdTdt(i)./ M(i);
+
+
+% Output
+
+xprime=[dxdt';dMdt';dTdt'];
+
+
+
+--------------6A2B37CFBAA
+Content-Type: text/plain; charset=us-ascii; name="colapinit.m"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline; filename="colapinit.m"
+
+% Returns steady state conditions for composition, holdup and temperature to 
+% column with pressure variations.
+% Simulation time 3000000 min. 
+
+Xinit =1.0e+02 *  [0.00010006630057   0.00499981082928   3.16249295454938
+		   0.00014275481009   0.00501700465090   3.15900623402102
+		   0.00019754188733   0.00501590017476   3.15494722178509
+		   0.00026750634771   0.00501456504737   3.15017480219359
+		   0.00035628642008   0.00501295404598   3.14452368455056
+		   0.00046803913261   0.00501102214626   3.13780759509895
+		   0.00060729452123   0.00500873089735   3.12982802056387
+		   0.00077865581379   0.00500605799655   3.12039084969804
+		   0.00098630226634   0.00500300973800   3.10933270636101
+		   0.00123328158597   0.00499963438396   3.09655674626849
+		   0.00152064435671   0.00499603224225   3.08207372699761
+		   0.00184657085320   0.00499235633863   3.06603878045610
+		   0.00220574051534   0.00498879800893   3.04876989179278
+		   0.00258923436069   0.00498555633702   3.03073459011548
+		   0.00298517481941   0.00498279847192   3.01249976699468
+		   0.00338008331599   0.00498062482729   2.99465393437638
+		   0.00376065820166   0.00497905302392   2.97772384402380
+		   0.00411549560911   0.00497802580270   2.96210985128357
+		   0.00443630436656   0.00497743676285   2.94805514615444
+		   0.00471838330911   0.00497716144478   2.93564956124035
+		   0.00496040245679   0.00497708274214   2.92485765406377
+		   0.00522547011502   0.00497809028590   2.91337343824972
+		   0.00552569770201   0.00497891407609   2.90082582989048
+		   0.00585823696526   0.00498002022255   2.88738933524936
+		   0.00621755423880   0.00498144806738   2.87332302908783
+		   0.00659553626824   0.00498321087280   2.85895151924580
+		   0.00698207434794   0.00498528764809   2.84463150106748
+		   0.00736607643522   0.00498762198877   2.83071068499121
+		   0.00773670952225   0.00499012923638   2.81748885347363
+		   0.00808458653821   0.00499271004489   2.80518994485363
+		   0.00840263199097   0.00499526607552   2.79394988582611
+		   0.00868647785756   0.00499771328717   2.78381969255316
+ 		   0.00893439378234   0.00499998995659   2.77477952610645
+		   0.00914687375139   0.00500205890858   2.76675802035229
+		   0.00932604887080   0.00500390522830   2.75965194021307
+		   0.00947507897440   0.00500553144750   2.75334299901220
+		   0.00959762461977   0.00500695202153   2.74771047407053
+		   0.00969744580697   0.00500818830966   2.74263957617793
+		   0.00977813207711   0.00500926463591   2.73802624469424
+		   0.00984294504517   0.00501020554221   2.73377928366359
+		   0.00989474567300   0.00500018917072   2.72982071419623
+ ]
+
+save colapinit;
+--------------6A2B37CFBAA
+Content-Type: application/octet-stream; name="colapinit.mat"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="colapinit.mat"
+
+TUFUTEFCIDUuMCBNQVQtZmlsZSwgUGxhdGZvcm06IFNPTDIsIENyZWF0ZWQgb246IFNhdCBO
+b3YgIDggMTI6MDU6NDMgMTk5NyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIAEATUkAAAAOAAAEEAAAAAYAAAAIAAAABgAAAAAAAAAFAAAACAAA
+ACkAAAADAAAAAQAAAAVYaW5pdAAAAAAAAAkAAAPYP4R+Wya0Mc4/jTx2oIvtfz+UOnEqRNxQ
+P5tkhLX0afU/oj3q2HNUMz+n9q65j8cTP68X7kWLaKY/s+7/rYG/tz+5P9SdykPgP7+SbyfZ
+mqs/w3bY8Qu64j/HotfnNkhPP8w7xUDXpdg/0JIzmoVlND/TGukRjiKqP9Wh7bJ/kQ4/2BF2
+X7Bopj/aVtP4MvAbP9xkcOo8p3A/3jKZZhDEIj/fvx+WLDsnP+C4tIKgwYs/4a6mzHiwYD/i
+vxFWOaHIP+Pla6F1m2E/5RsQNSVaQz/mV7ceSHUBP+eSSjFdI8U/6MHplbV9XT/p3uSuyopJ
+P+rjb6YE7Sw/68v2cPITID/slw4tzyfFP+1FHnVJJ6M/7dfmNEMl3z/uUfwVBpvUP+62X8RD
+1D4/7wglyXIjnj/vSj7sluYzP+9/VzBRDqk/76nGkVjfPT/f/7Cn8tfYP+AN7iI+YqE/4A0G
+giHnVD/gC+6DBsfBP+AKnKkMRZ4/4AkHgviy8D/gBycAe3cuP+AE9nQ2mM4/4AJ3MBQYMD/f
+/2amRtFnP9/5f81BcSE/3/N6BBwfYD/f7aWLXht4P9/oVeN/JTM/3+PRJ/yDWz/f4EF2q+Ey
+P9/drjOR1RY/39v/WofwrT/f2whK29UsP9/alNDOWaM/39pzziynnT/f3BpmXKUiP9/dc+wo
+9sA/399D37tVbj/f4ZrBZyozP9/kfiExlbE/3+flMT4TWD/f67hJKhjKP9/v0+bTnpo/3/QO
+XwfDxj/f+D5yursNP9/8QOIUWcs/3//7yZjZGj/gAa/I0A2PP+ADMvxZD+c/4ASIB1OO/D/g
+BbHx0FwcP+AGtTaHCZo/4AeW71pggD/gCFxB4Bh+P+AAJ6wGlBRAc8P9HTsgAEBzvmj0FaCl
+QHO36mHNlNVAc7BHmVanlUBzpzzmtINTQHOcff2vEKRAc4+5jqYp+0BzgKAXj7EsQHNu7q0w
+xe9Ac1p9pK1yI0BzQ1FmCTjoQHMpqXwGiq1Acw4IJc4/HkBy8SzjW0MfQHLT/+eRT6JAcrdy
+QGOm2kBynFuvv0KaQHKDYDHxI8ZAcmzjY0scg0ByWQoPbsZ8QHJHxbHyXq5AcjVlwqN8MkBy
+IVJCilKtQHIL0qv1uEpAcfVRHNrZa0Bx3lKK0xBcQHHHaRAWGfJAcbEjGLj4AkBxm/tvM7YL
+QHGITc0pVwRAcXZR34xJuUBxZhyLyzqOQHFXpbGi/CFAcUrQFct+D0BxP3FvSTzvQHE1WUra
+bLxAcSxWNc5PVUBxJDkrn383QHEc14zBclRAcRYL/p1b4kBxD7aQhVnf
+--------------6A2B37CFBAA
+Content-Type: text/plain; charset=us-ascii; name="kjoercolap.m"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline; filename="kjoercolap.m"
+
+% This is a sub-routine for colamodp.m
+
+
+clear all;
+
+
+% Gets steady state values for composition, holdup and temperature.
+% This is found by running the model with the same composition, holdup 
+% and temperature on each stage i 3000000 min.
+
+load colapinit.mat Xinit;
+
+
+SimTime=100;				% Set simulation time [min]
+ 
+
+% Solves the ODE's in colamodp.m with initialvalues and constants given in cola4p.m
+
+[t,x]=ode15s('cola4p',[0 SimTime],Xinit);
+
+
+% Column data
+
+NT=41;					% Number of stages in column
+NF=21;					% Feed stage
+TimeSteps=length(t);			
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Plotting deviationvariabels for top, feed and bottom pressure
+
+
+% Termodynamic data	
+
+TBL= 272.65;				% Boilingpoint light comp.(K)
+TBH= 309.25;				% Boilingpoint heavy comp.(K)
+HvapL=19575;				% Hvap for light comp. (kJ/kmol)
+HvapH=28350;				% Hvap for heavy comp. (kJ/kmol)
+p0L=1.013e5;				% Vapor pressure of pure light liquid comp.(Pa)
+p0H=1.013e5;				% Vapor pressure of pure heavy liquid comp.(Pa)
+R=8.314;				% Universal gasconstant (kJ/kmol*K)
+
+
+% Calculate stage pressure thru the column
+% This is done by combining Clausius-Clapeyron , Raoults law and Xinit
+
+for j=1:NT ,
+    for i=1:TimeSteps,
+	p(i,j) = (1-x(i,j)).*p0H*exp(-HvapH/R*(1./x(i,(2*NT+j))-1/TBH))                                + x(i,j).*p0L*exp(-HvapL/R*(1./x(i,(2*NT+j))-1/TBL));
+    end;
+end;
+
+
+% Calculate steady state pressure in top, bottom and feed
+
+PsteadyTop   =(1-Xinit(NT,1)).*p0H*exp(-HvapH/R*(1./Xinit(NT,3)-1/TBH))                              + Xinit(NT,1).*p0L*exp(-HvapL/R*(1./Xinit(NT,3)-1/TBL));
+
+PsteadyBottom=(1-Xinit(1,1)).*p0H*exp(-HvapH/R*(1./Xinit(1,3)-1/TBH))                                + Xinit(1,1).*p0L*exp(-HvapL/R*(1./Xinit(1,3)-1/TBL));
+
+PsteadyFeed  =(1-Xinit(NF,1)).*p0H*exp(-HvapH/R*(1./Xinit(NF,3)-1/TBH))                              + Xinit(NF,1).*p0L*exp(-HvapL/R*(1./Xinit(NF,3)-1/TBL));
+
+
+
+% Calculate deviationvariabels for top, feed and bottom pressure
+
+for i=1:TimeSteps,
+	pD(i,1)=p(i,NT)-PsteadyTop;
+	pF(i,1)=p(i,NF)-PsteadyFeed;
+	pB(i,1)=p(i,1)-PsteadyBottom;
+end;
+
+
+
+subplot(3,1,1);				% Draw window 1
+plot(t,pD,'r',t,pF,'b',t,pB,'k');	% Plots deviation in pressure in condenser
+					% Plots deviation in pressure at feedstage 
+					% Plots deviation in pressure in reboiler
+axis([0 SimTime -1000 1000]); 
+
+% Generates text on the plots
+
+text(0.9*SimTime,(pD(TimeSteps,1)+abs(0.07*pD(TimeSteps,1))),'Top');	
+text(0.9*SimTime,(pF(TimeSteps,1)+abs(0.07*pD(TimeSteps,1))),'Feed');
+text(0.9*SimTime,(pB(TimeSteps,1)+abs(0.07*pD(TimeSteps,1))),'Bottom');	
+%text(0.9*SimTime,(pD(TimeSteps,1)+),'Top');	
+%text(0.9*SimTime,(pF(TimeSteps,1)+0.3e5),'Feed');
+%text(0.9*SimTime,(pB(TimeSteps,1)-0.4e5),'Bottom');	
+
+ylabel(' Pressure [Pa]');
+title(' Deviation Pressure ');
+xlabel('Time [min]');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Plots deviationvariabels for top, feed and bottom composition
+
+
+% Calculate deviationvariabels for top, feed and bottom composition
+
+for i=1:TimeSteps,
+	xD(i,1)=x(i,NT)-Xinit(NT,1);
+	xF(i,1)=x(i,NF)-Xinit(NF,1);
+	xB(i,1)=x(i,1)-Xinit(1,1);
+end;
+
+
+subplot(3,1,2);				% Draw window 2
+plot(t,xD,'r',t,xF,'b',t,xB,'k');	% Plots deviation in composition in condenser
+					% Plots deviation in composition at feedstage 
+					% Plots deviation in composition in reboiler
+
+axis([0 SimTime -0.2 0.2]);
+% Generates text on the plots
+
+%text(0.9*SimTime,(xD(TimeSteps,1)+abs(0.60*xD(TimeSteps,1))),'Top');	
+text(0.9*SimTime,(xF(TimeSteps,1)+abs(0.07*xF(TimeSteps,1))),'Feed');
+%text(0.9*SimTime,(xB(TimeSteps,1)+abs(0.25*xB(TimeSteps,1))),'Bottom');
+text(0.9*SimTime,(xD(TimeSteps,1)+0.01),'Top');	
+%text(0.9*SimTime,(xF(TimeSteps,1)+0.003),'Feed');
+text(0.9*SimTime,(xB(TimeSteps,1)+0.004),'Bottom');	
+
+ylabel('Composition');
+title(' Deviation Composition ');
+xlabel('Time [min]');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Plots deviationvariabels for top, feed and bottom temperature
+
+
+% Calculate deviationvariabels for top, feed and bottom temperature
+
+for i=1:TimeSteps,
+	TD(i,1)=x(i,3*NT)-Xinit(NT,3);
+	TF(i,1)=x(i,(2*NT+NF))-Xinit(NF,3);
+	TB(i,1)=x(i,2*NT+1)-Xinit(1,3);
+end;
+
+
+subplot(3,1,3);				% Draw window 3	
+plot(t,TD,'r',t,TF,'b',t,TB,'k');	% Plots deviation in temperature in condenser
+					% Plots deviation in temperature at feedstage
+					% Plots deviation in temperature in reboiler
+axis([0 SimTime -3 3]); 
+
+% Generates text on the plots
+
+%text(0.9*SimTime,(TD(TimeSteps,1)+abs(0.07*TD(TimeSteps,1))),'Top');	
+text(0.9*SimTime,(TF(TimeSteps,1)+abs(0.07*TF(TimeSteps,1))),'Feed');
+%text(0.9*SimTime,(TB(TimeSteps,1)+abs(0.07*TB(TimeSteps,1))),'Bottom');
+text(0.9*SimTime,(TD(TimeSteps,1)-0.1),'Top');	
+text(0.9*SimTime,(TB(TimeSteps,1)+0.1),'Bottom');
+
+ylabel('Temperature [K]');
+title(' Deviation Temperature ');
+xlabel('Time [min]');
+
+
+
+
+
+
+--------------6A2B37CFBAA--
+
+

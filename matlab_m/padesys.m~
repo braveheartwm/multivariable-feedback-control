@@ -1,0 +1,24 @@
+
+% function pade = pade(theta,n)
+%
+% Pade approximation of order n of delay theta (actually this is 
+% n first-order Pade approximations in series). 
+%
+% This gives a transfer function approximation.
+% To compute the exact frequency response of a scalar delay use delay.m
+%
+% S. Skogestad ; Jan. 1996 / corrected May 2007
+
+function pade = pade(theta,n)
+
+if (nargin == 0) | (nargin > 3),
+   disp('usage: pade = pade(theta,n)')
+   return
+end
+
+pade=1;
+delay = nd2sys([-theta/(2*n) 1],[theta/(2*n) 1]);
+for i=1:n pade=mmult(pade,delay); 
+end
+
+

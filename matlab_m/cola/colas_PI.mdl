@@ -1,0 +1,665 @@
+Model {
+  Name			  "colas_PI"
+  Version		  2.09
+  SimParamPage		  Solver
+  SampleTimeColors	  off
+  InvariantConstants	  off
+  WideVectorLines	  on
+  ShowLineWidths	  off
+  PaperOrientation	  landscape
+  PaperType		  usletter
+  PaperUnits		  inches
+  StartTime		  "0.0"
+  StopTime		  "200"
+  Solver		  ode15s
+  RelTol		  "1e-6"
+  AbsTol		  "1e-6"
+  Refine		  "1"
+  MaxStep		  "5"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  MaxOrder		  5
+  OutputOption		  RefineOutputTimes
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  LimitMaxRows		  off
+  MaxRows		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  warning
+  MinStepSizeMsg	  warning
+  UnconnectedInputMsg	  warning
+  UnconnectedOutputMsg	  warning
+  UnconnectedLineMsg	  warning
+  ConsistencyChecking	  off
+  ZeroCross		  on
+  SimulationMode	  normal
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_unix.tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  BlockDefaults {
+    Orientation		    right
+    ForegroundColor	    black
+    BackgroundColor	    white
+    DropShadow		    off
+    NamePlacement	    normal
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    normal
+    FontAngle		    normal
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    center
+    VerticalAlignment	    middle
+    ForegroundColor	    black
+    BackgroundColor	    white
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    normal
+    FontAngle		    normal
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    normal
+    FontAngle		    normal
+  }
+  System {
+    Name		    "colas_PI"
+    Location		    [59, 72, 853, 623]
+    Open		    on
+    ScreenColor		    white
+    Block {
+      BlockType		      TransferFcn
+      Name		      " CyD"
+      Position		      [340, 411, 390, 449]
+      Orientation	      left
+      Numerator		      "[3.76 1]"
+      Denominator	      "[3.76 0]"
+    }
+    Block {
+      BlockType		      Clock
+      Name		      "Clock"
+      Position		      [85, 10, 105, 30]
+      Location		      [30, 40, 140, 75]
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "Comp."
+      Position		      [495, 237, 545, 253]
+      VariableName	      "Comp"
+      Buffer		      "1200"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      TransferFcn
+      Name		      "CxB"
+      Position		      [280, 377, 335, 413]
+      Orientation	      left
+      Numerator		      "[3.31 1]"
+      Denominator	      "[3.31 0]"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "Delta L"
+      Position		      [500, 477, 550, 493]
+      VariableName	      "u1"
+      Buffer		      "1200"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "Delta V"
+      Position		      [505, 517, 555, 533]
+      VariableName	      "u2"
+      Buffer		      "1200"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      Ports		      [1, 5, 0, 0, 0]
+      Position		      [380, 116, 435, 184]
+      Outputs		      "[1,1,1,1,41]"
+    }
+    Block {
+      BlockType		      S-Function
+      Name		      "Distillation\ncolumn\n(nonlinear)\n\nLV configur"
+			      "ation"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [285, 117, 355, 183]
+      FunctionName	      "colas"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "F"
+      Position		      [170, 65, 200, 85]
+      Orientation	      down
+      Value		      "1"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain"
+      Position		      [330, 290, 360, 320]
+      Orientation	      left
+      Gain		      "-10"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain1"
+      Position		      [335, 340, 365, 370]
+      Orientation	      left
+      Gain		      "-10"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Graph"
+      Ports		      [1, 0, 0, 0, 0]
+      Position		      [685, 56, 715, 94]
+      Floating		      off
+      Location		      [188, 365, 512, 604]
+      Open		      off
+      Grid		      on
+      TickLabels	      on
+      ZoomMode		      on
+      TimeRange		      "20"
+      YMin		      "0.985"
+      YMax		      "1"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      LimitMaxRows	      on
+      MaxRows		      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Graph1"
+      Ports		      [1, 0, 0, 0, 0]
+      Position		      [685, 116, 715, 154]
+      Floating		      off
+      Location		      [188, 365, 512, 604]
+      Open		      off
+      Grid		      on
+      TickLabels	      on
+      ZoomMode		      on
+      TimeRange		      "20"
+      YMin		      "0"
+      YMax		      "0.02"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      LimitMaxRows	      on
+      MaxRows		      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "KpxB"
+      Position		      [215, 378, 265, 412]
+      Orientation	      left
+      Gain		      "-37.5"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "KpyD"
+      Position		      [250, 414, 295, 446]
+      Orientation	      left
+      Gain		      "26.1"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "L0"
+      Position		      [0, 103, 55, 127]
+      Value		      "2.70629"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "M_B"
+      Position		      [495, 202, 545, 218]
+      VariableName	      "y4"
+      Buffer		      "1200"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "M_D"
+      Position		      [495, 172, 545, 188]
+      VariableName	      "y3"
+      Buffer		      "1200"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [7, 1, 0, 0, 0]
+      Position		      [225, 116, 265, 184]
+      Inputs		      "7"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [400, 295, 420, 315]
+      Orientation	      left
+      Inputs		      "-+"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum1"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [405, 345, 425, 365]
+      Orientation	      left
+      Inputs		      "-+"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum2"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [415, 420, 435, 440]
+      Orientation	      left
+      Inputs		      "-+"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum3"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [415, 385, 435, 405]
+      Orientation	      left
+      Inputs		      "-+"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum4"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [95, 110, 115, 130]
+      Inputs		      "++"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum5"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [100, 200, 120, 220]
+      Orientation	      up
+      Inputs		      "++"
+    }
+    Block {
+      BlockType		      TransportDelay
+      Name		      "Transport\nDelay"
+      Position		      [550, 265, 590, 295]
+      Orientation	      down
+      DelayTime		      "1"
+      InitialInput	      "0.01"
+      BufferSize	      "1024"
+    }
+    Block {
+      BlockType		      TransportDelay
+      Name		      "Transport\nDelay1"
+      Position		      [610, 220, 650, 250]
+      Orientation	      down
+      DelayTime		      "1"
+      InitialInput	      "0.99"
+      BufferSize	      "1024"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "V0"
+      Position		      [0, 240, 60, 260]
+      Value		      "3.20629"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "qF"
+      Position		      [220, 65, 250, 85]
+      Orientation	      down
+      Value		      "1"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "rMB"
+      Position		      [490, 350, 550, 370]
+      Orientation	      left
+      Value		      "0.5"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "rMD"
+      Position		      [490, 300, 550, 320]
+      Orientation	      left
+      Value		      "0.5"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "time"
+      Position		      [485, 12, 535, 28]
+      VariableName	      "t"
+      Buffer		      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "xBs"
+      Position		      [690, 390, 730, 410]
+      Orientation	      left
+      Value		      "0.01"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "x_B"
+      Position		      [495, 142, 545, 158]
+      VariableName	      "y2"
+      Buffer		      "1200"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "yDs"
+      Position		      [690, 424, 730, 446]
+      Orientation	      left
+      Value		      "0.99"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "y_D"
+      Position		      [495, 92, 545, 108]
+      VariableName	      "y1"
+      Buffer		      "1200"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "zF"
+      Position		      [116, 65, 144, 85]
+      Orientation	      down
+      Value		      "0.5"
+    }
+    Line {
+      SrcBlock		      "yDs"
+      SrcPort		      1
+      DstBlock		      "Sum2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "xBs"
+      SrcPort		      1
+      DstBlock		      "Sum3"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Transport\nDelay1"
+      SrcPort		      1
+      Points		      [0, 165; -160, 0; 0, 5]
+      DstBlock		      "Sum2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Transport\nDelay"
+      SrcPort		      1
+      Points		      [0, 85; -100, 0; 0, 5]
+      DstBlock		      "Sum3"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      Points		      [0, 0]
+      Branch {
+	Points			[130, 0]
+	DstBlock		"Transport\nDelay"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"Graph1"
+	DstPort			1
+      }
+      Branch {
+	Points			[35, 0; 0, 15]
+	DstBlock		"x_B"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "KpxB"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	Points			[-10, 0; 0, 130]
+	DstBlock		"Delta V"
+	DstPort			1
+      }
+      Branch {
+	Points			[-95, 0]
+	DstBlock		"Sum5"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      "KpyD"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	Points			[-10, 0; 0, 55]
+	DstBlock		"Delta L"
+	DstPort			1
+      }
+      Branch {
+	Points			[-165, 0]
+	DstBlock		"Sum4"
+	DstPort			2
+      }
+    }
+    Line {
+      SrcBlock		      " CyD"
+      SrcPort		      1
+      DstBlock		      "KpyD"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "CxB"
+      SrcPort		      1
+      DstBlock		      "KpxB"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum3"
+      SrcPort		      1
+      DstBlock		      "CxB"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum5"
+      SrcPort		      1
+      Points		      [0, -15; 15, 0; 0, -50]
+      DstBlock		      "Mux"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "V0"
+      SrcPort		      1
+      Points		      [40, 0]
+      DstBlock		      "Sum5"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "L0"
+      SrcPort		      1
+      DstBlock		      "Sum4"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Sum4"
+      SrcPort		      1
+      DstBlock		      "Mux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	Points			[190, 0]
+	DstBlock		"Transport\nDelay1"
+	DstPort			1
+      }
+      Branch {
+	Points			[20, 0; 0, -45]
+	DstBlock		"Graph"
+	DstPort			1
+      }
+      Branch {
+	Points			[40, 0]
+	DstBlock		"y_D"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Sum2"
+      SrcPort		      1
+      DstBlock		      " CyD"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "qF"
+      SrcPort		      1
+      Points		      [0, 14; -35, 0; 0, 76]
+      DstBlock		      "Mux"
+      DstPort		      7
+    }
+    Line {
+      SrcBlock		      "Gain1"
+      SrcPort		      1
+      Points		      [-145, 0; 0, -205]
+      DstBlock		      "Mux"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "Gain1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "rMB"
+      SrcPort		      1
+      DstBlock		      "Sum1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      4
+      Points		      [0, 0]
+      Branch {
+	Points			[10, 0; 0, 185]
+	DstBlock		"Sum1"
+	DstPort			1
+      }
+      Branch {
+	Points			[10, 0; 0, 45]
+	DstBlock		"M_B"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      3
+      Points		      [0, 0]
+      Branch {
+	Points			[20, 0; 0, 150]
+	DstBlock		"Sum"
+	DstPort			1
+      }
+      Branch {
+	Points			[20, 0; 0, 30]
+	DstBlock		"M_D"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Gain"
+      SrcPort		      1
+      Points		      [-150, 0; 0, -165]
+      DstBlock		      "Mux"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "rMD"
+      SrcPort		      1
+      DstBlock		      "Sum"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      DstBlock		      "Gain"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "Distillation\ncolumn\n(nonlinear)\n\nLV configur"
+			      "ation"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Distillation\ncolumn\n(nonlinear)\n\nLV configur"
+			      "ation"
+      SrcPort		      1
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Clock"
+      SrcPort		      1
+      DstBlock		      "time"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "zF"
+      SrcPort		      1
+      Points		      [0, 10; 25, 0; 0, 70]
+      DstBlock		      "Mux"
+      DstPort		      6
+    }
+    Line {
+      SrcBlock		      "F"
+      SrcPort		      1
+      Points		      [0, 10; -20, 0; 0, 60]
+      DstBlock		      "Mux"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      5
+      Points		      [-1, 0; 0, 65]
+      DstBlock		      "Comp."
+      DstPort		      1
+    }
+  }
+}

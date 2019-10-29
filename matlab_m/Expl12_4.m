@@ -1,0 +1,28 @@
+% Example of a Generalized eigenvalue problem (upper bound on mu)
+%
+% Copyright 1996-2003 Sigurd Skogestad & Ian Postlethwaite
+% $Id: Muup_LMI.m,v 1 2004/26/04 kariwala Exp $
+
+% Delta: Structured matrix with 2 x 2 block and a repeated scalar 
+M = randn(4,4);
+M = [-1 -1;3 3];
+
+setlmis([])
+
+P = lmivar(1,[1,1;1,1]); % Structured matrix that commutes with Delta
+gamma = lmivar(1,[1 1]);
+
+Ppos = newlmi;                  % New LMI 
+lmiterm([-Ppos 1 1 P],1,1)     % P > 0
+
+MuupLMI = newlmi;                  % New LMI 
+
+lmiterm([MuupLMI 1 1 P],M',M)  % M'PM (left hand side)
+lmiterm([-MuupLMI 1 1 P],1,1)  % P (right hand side)
+
+LMIsys = getlmis;               % Obtaining the system of LMIs
+
+[gmin,xopt] = gevp(LMIsys,1);  % Solving the minimization problem
+ 
+Popt = dec2mat(LMIsys,xopt,P);  % Obtaining the optimal P
+Dopt = sqrtm(Popt);             % and scaling matrices  

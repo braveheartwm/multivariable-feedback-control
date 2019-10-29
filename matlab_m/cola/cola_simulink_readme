@@ -1,0 +1,62 @@
+%
+% The files to simulate the distillation column are:
+%    colamod.m     - model of the distillation column which 
+%                    returns the derivative of the states
+%                    dx/dt = f(t,x,u).
+%    colas.m       - SIMULINK interface to colamod.m.
+%    cola_init.mat - Binary file containig the default
+%                    initial values of the states and the 
+%                    controls.
+%   cola_nonlin.m  - Type:
+%                    cola_nonlin
+%                    in the MATLAB window and the non-linear
+%                    SIMULINK model of the distillation column 
+%                    appears.
+%   cola_lv_nonlin.m - Type:
+%                    cola_lv_nonlin
+%                    in the MATLAB window and the non-linear
+%                    SIMULINK model of the distillation column 
+%                    with LV-configuration appears.
+%   cola_lin.m     - A linearized Simulink model of the 
+%                    distillation column. Use the following
+%                    MATLAB commands:
+%                    clear all
+%                    load cola_init
+%                    [A,B,C,D] = linmod('colas',Xinit,Uinit); 
+%                    and the linearized model of the open-loop 
+%                    model appears.
+%   cola_test_simulink.m - contains further description on 
+%                    use of the distillation column model with 
+%                    SIMULINK. 
+%    
+
+%
+% States:    X    - State, the first 41 states are compositions of light
+%                   component A with reboiler/bottom stage as X(1) and 
+%                   condenser as X(41). State X(42)is holdup in reboiler/
+%                   bottom stage and X(82) is hold-up in condenser. 
+% Inputs:    U(1) - reflux L,
+%            U(2) - boilup V,
+%            U(3) - top or distillate product flow D,
+%            U(4) - bottom product flow B,
+%            U(5) - feed rate F,
+%            U(6) - feed composition, zF.
+%            U(7) - liquid feed fraction, qF.
+%
+% Outputs:   sys and x0 as described in the SIMULINK manual.
+%            when flag is 0 sys contains sizes and x0 contains 
+%            initial condition. 
+%            when flag is 1, sys contains the derivatives,
+%            and when flag is 3 sys contains outputs; 
+%            y(1)    - top composition,
+%            y(2)    - bottom composition,
+%            y(3)    - condenser holdup,
+%            y(4)    - reboiler holdup,
+%            y(5:45) - tray composition, y(5) is reboiler y(45) is top.
+
+
+
+
+
+
+

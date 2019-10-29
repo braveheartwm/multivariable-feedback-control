@@ -1,0 +1,421 @@
+Model {
+  Name			  "colas_lv_nonlin"
+  Version		  2.09
+  SimParamPage		  Solver
+  SampleTimeColors	  off
+  InvariantConstants	  off
+  WideVectorLines	  on
+  ShowLineWidths	  off
+  PaperOrientation	  landscape
+  PaperType		  usletter
+  PaperUnits		  inches
+  StartTime		  "0.0"
+  StopTime		  "100"
+  Solver		  ode45
+  RelTol		  "1e-5"
+  AbsTol		  "1e-5"
+  Refine		  "1"
+  MaxStep		  "1"
+  InitialStep		  "auto"
+  FixedStep		  "auto"
+  MaxOrder		  5
+  OutputOption		  RefineOutputTimes
+  OutputTimes		  "[]"
+  LoadExternalInput	  off
+  ExternalInput		  "[t, u]"
+  SaveTime		  off
+  TimeSaveName		  "tout"
+  SaveState		  off
+  StateSaveName		  "xout"
+  SaveOutput		  off
+  OutputSaveName	  "yout"
+  LoadInitialState	  off
+  InitialState		  "xInitial"
+  SaveFinalState	  off
+  FinalStateName	  "xFinal"
+  LimitMaxRows		  off
+  MaxRows		  "1000"
+  Decimation		  "1"
+  AlgebraicLoopMsg	  warning
+  MinStepSizeMsg	  warning
+  UnconnectedInputMsg	  warning
+  UnconnectedOutputMsg	  warning
+  UnconnectedLineMsg	  warning
+  ConsistencyChecking	  off
+  ZeroCross		  on
+  SimulationMode	  normal
+  RTWSystemTargetFile	  "grt.tlc"
+  RTWInlineParameters	  off
+  RTWRetainRTWFile	  off
+  RTWTemplateMakefile	  "grt_unix.tmf"
+  RTWMakeCommand	  "make_rtw"
+  RTWGenerateCodeOnly	  off
+  ExtModeMexFile	  "ext_comm"
+  ExtModeBatchMode	  off
+  BlockDefaults {
+    Orientation		    right
+    ForegroundColor	    black
+    BackgroundColor	    white
+    DropShadow		    off
+    NamePlacement	    normal
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    normal
+    FontAngle		    normal
+    ShowName		    on
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    center
+    VerticalAlignment	    middle
+    ForegroundColor	    black
+    BackgroundColor	    white
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    normal
+    FontAngle		    normal
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    normal
+    FontAngle		    normal
+  }
+  System {
+    Name		    "colas_lv_nonlin"
+    Location		    [270, 61, 978, 611]
+    Open		    on
+    ScreenColor		    white
+    Block {
+      BlockType		      Clock
+      Name		      "Clock"
+      Position		      [85, 10, 105, 30]
+      Location		      [30, 40, 140, 75]
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "Comp."
+      Position		      [495, 237, 545, 253]
+      VariableName	      "Comp"
+      Buffer		      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      Ports		      [1, 5, 0, 0, 0]
+      Position		      [380, 116, 435, 184]
+      Outputs		      "[1,1,1,1,41]"
+    }
+    Block {
+      BlockType		      S-Function
+      Name		      "Distillation\ncolumn\n(nonlinear)\n\nLV configur"
+			      "ation"
+      Ports		      [1, 1, 0, 0, 0]
+      Position		      [285, 117, 355, 183]
+      FunctionName	      "colas"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "F"
+      Position		      [170, 65, 200, 85]
+      Orientation	      down
+      Value		      "1.01"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain"
+      Position		      [330, 290, 360, 320]
+      Orientation	      left
+      Gain		      "-10"
+    }
+    Block {
+      BlockType		      Gain
+      Name		      "Gain1"
+      Position		      [335, 340, 365, 370]
+      Orientation	      left
+      Gain		      "-10"
+    }
+    Block {
+      BlockType		      Scope
+      Name		      "Graph"
+      Ports		      [1, 0, 0, 0, 0]
+      Position		      [565, 56, 595, 94]
+      Floating		      off
+      Location		      [188, 365, 512, 604]
+      Open		      off
+      Grid		      on
+      TickLabels	      on
+      ZoomMode		      on
+      TimeRange		      "50"
+      YMin		      "0.98"
+      YMax		      "1"
+      SaveToWorkspace	      off
+      SaveName		      "ScopeData"
+      LimitMaxRows	      on
+      MaxRows		      "5000"
+      Decimation	      "1"
+      SampleInput	      off
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "L"
+      Position		      [75, 110, 130, 130]
+      Value		      "2.7063"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "M_B"
+      Position		      [495, 202, 545, 218]
+      VariableName	      "y4"
+      Buffer		      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "M_D"
+      Position		      [495, 172, 545, 188]
+      VariableName	      "y3"
+      Buffer		      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Mux
+      Name		      "Mux"
+      Ports		      [7, 1, 0, 0, 0]
+      Position		      [225, 116, 265, 184]
+      Inputs		      "7"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [400, 295, 420, 315]
+      Orientation	      left
+      Inputs		      "-+"
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum1"
+      Ports		      [2, 1, 0, 0, 0]
+      Position		      [400, 345, 420, 365]
+      Orientation	      left
+      Inputs		      "-+"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "V"
+      Position		      [75, 150, 130, 170]
+      Value		      "3.2063"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "qF"
+      Position		      [220, 65, 250, 85]
+      Orientation	      down
+      Value		      "1"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "rB"
+      Position		      [490, 350, 550, 370]
+      Orientation	      left
+      Value		      "0.5"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "rD"
+      Position		      [490, 300, 550, 320]
+      Orientation	      left
+      Value		      "0.5"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "time"
+      Position		      [485, 12, 535, 28]
+      VariableName	      "t"
+      Buffer		      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "x_B"
+      Position		      [495, 142, 545, 158]
+      VariableName	      "y2"
+      Buffer		      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "y_D"
+      Position		      [495, 112, 545, 128]
+      VariableName	      "y1"
+      Buffer		      "1000"
+      Decimation	      "1"
+      SampleTime	      "0"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "zF"
+      Position		      [116, 65, 144, 85]
+      Orientation	      down
+      Value		      "0.5"
+    }
+    Line {
+      SrcBlock		      "qF"
+      SrcPort		      1
+      Points		      [0, 14; -35, 0; 0, 76]
+      DstBlock		      "Mux"
+      DstPort		      7
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      1
+      Points		      [0, 0]
+      Branch {
+	Points			[0, -45]
+	DstBlock		"Graph"
+	DstPort			1
+      }
+      Branch {
+	DstBlock		"y_D"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Gain1"
+      SrcPort		      1
+      Points		      [-145, 0; 0, -205]
+      DstBlock		      "Mux"
+      DstPort		      4
+    }
+    Line {
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "Gain1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "rB"
+      SrcPort		      1
+      DstBlock		      "Sum1"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      4
+      Points		      [0, 0]
+      Branch {
+	Points			[10, 0; 0, 185]
+	DstBlock		"Sum1"
+	DstPort			1
+      }
+      Branch {
+	Points			[10, 0; 0, 45]
+	DstBlock		"M_B"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      3
+      Points		      [0, 0]
+      Branch {
+	Points			[20, 0; 0, 150]
+	DstBlock		"Sum"
+	DstPort			1
+      }
+      Branch {
+	Points			[20, 0; 0, 30]
+	DstBlock		"M_D"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Gain"
+      SrcPort		      1
+      Points		      [-150, 0; 0, -165]
+      DstBlock		      "Mux"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "rD"
+      SrcPort		      1
+      DstBlock		      "Sum"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      DstBlock		      "Gain"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Mux"
+      SrcPort		      1
+      DstBlock		      "Distillation\ncolumn\n(nonlinear)\n\nLV configur"
+			      "ation"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      2
+      Points		      [35, 0; 0, 15]
+      DstBlock		      "x_B"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Distillation\ncolumn\n(nonlinear)\n\nLV configur"
+			      "ation"
+      SrcPort		      1
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Clock"
+      SrcPort		      1
+      DstBlock		      "time"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "zF"
+      SrcPort		      1
+      Points		      [0, 10; 25, 0; 0, 70]
+      DstBlock		      "Mux"
+      DstPort		      6
+    }
+    Line {
+      SrcBlock		      "V"
+      SrcPort		      1
+      Points		      [10, 0; 0, -30]
+      DstBlock		      "Mux"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "F"
+      SrcPort		      1
+      Points		      [0, 10; -20, 0; 0, 60]
+      DstBlock		      "Mux"
+      DstPort		      5
+    }
+    Line {
+      SrcBlock		      "Demux"
+      SrcPort		      5
+      Points		      [-1, 0; 0, 65]
+      DstBlock		      "Comp."
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "L"
+      SrcPort		      1
+      DstBlock		      "Mux"
+      DstPort		      1
+    }
+  }
+}

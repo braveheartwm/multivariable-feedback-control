@@ -1,0 +1,24 @@
+
+This directory contains MATLAB files for a distillation column model
+("column A"). Last updated 12Aug97
+
+The following files are included:
+
+G4.mat                cola_init.m           cola_rr_lin.m
+README.cola           cola_init.mat         cola_simulink_readme
+cola.dat              cola_lb.m             cola_test.m
+cola.html             cola_lb_F1.m          colamod.m
+cola4.m               cola_linearize.m      colas.m
+cola4_F1.m            cola_lv.m             colas_lin.m
+cola4_lin.m           cola_lv_F1.m          colas_lv_nonlin.m
+cola_G4.m             cola_lv_lin.m         colas_nonlin.m
+cola_dv.m             cola_rr.m             colas_test.m
+cola_init.dat         cola_rr_F1.m          matlab_cola.tar.gz
+
+ALL the files are combined into the file matlab_cola.tar.gz, 
+and you can easily transfer it back to your own computer,
+and can be recreated using
+     gunzip -c matlab_cola.tar.gz | tar xvf -
+
+
+

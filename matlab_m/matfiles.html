@@ -1,0 +1,931 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=us-ascii">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="matfiles_files/filelist.xml">
+<title>Matlab Files for MULTIVARIABLE FEEDBACK CONTROL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>hori</o:Author>
+  <o:LastAuthor>hori</o:LastAuthor>
+  <o:Revision>24</o:Revision>
+  <o:TotalTime>230</o:TotalTime>
+  <o:Created>2005-12-20T12:53:00Z</o:Created>
+  <o:LastSaved>2005-12-22T14:41:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>2385</o:Words>
+  <o:Characters>13599</o:Characters>
+  <o:Company>NTNU</o:Company>
+  <o:Lines>113</o:Lines>
+  <o:Paragraphs>31</o:Paragraphs>
+  <o:CharactersWithSpaces>15953</o:CharactersWithSpaces>
+  <o:Version>11.6568</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:\5B8B\4F53;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+@font-face
+	{font-family:"\@SimSun";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:SimSun;}
+h2
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h4
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:SimSun;}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:SimSun;}
+tt
+	{font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:SimSun;
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="4098"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=EN-US link=blue vlink=blue style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<h2><span class=SpellE>S.Skogestad</span> and <span class=SpellE>I.Postlethwaite</span>,
+<a href="http://www.chembio.ntnu.no/users/skoge/book.html"><i>Multivariable
+feedback control 2<sup>nd</sup> <span class=GramE>edition </span></i></a>,
+Wiley 2005, 588 pages. <o:p></o:p></h2>
+
+<p><!-- <h3> NOTE: The page numbers may be slightly different in the Second
+Edition of the book (2001) </h3> -->The
+list of the MATLAB files organized by chapter: </p>
+
+<h2><a name=c2>Chapter 2</a></h2>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Eq2_31.m"><tt>Eq2_31.m</tt></a>
+and <a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Eq2_62.m"><tt>Eq2_62.m</tt></a>&nbsp;&nbsp;
+<span class=GramE>The</span> two main plant models (2.31) p.26<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>&amp; (2.62) p.47.</span><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_4.m"><tt>Expl2_4.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.4 p.29<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_5.m"><tt>Expl2_5.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.5 p.30<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_7.m"><tt>Expl2_7.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.7 p.39<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_8.m"><tt>Expl2_8.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.8 p.44<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_9.m"><tt>Expl2_9.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.9 p.47<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_10.m"><tt>Expl2_10.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.10 p.49<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_11.m"><tt>Expl2_11.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.11 p.52<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_12.m"><tt>Expl2_12.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.12 p.53<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl2_17.m"><tt>Expl2_17.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 2.17 p.52<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig2_1.m"><tt>Fig2_1.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>2.1 p.17</span><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig2_2.m"><tt>Fig2_2.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>2.2 p.17</span><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig2_3.m"><tt>Fig2_3.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>2.3 p.20</span><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig2_6.m"><tt>Fig2_6.m</tt></a>
+and <a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig2_7.m"><tt>Fig2_7.m</tt></a>&nbsp;&nbsp;
+Figures 2.6 p.26 &amp; <span class=GramE>2.7 p.28</span><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Tab2_1.m"><tt>Tab2_1.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Table <span class=GramE>2.1 p.36</span><o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Tab2_4.m"><tt>Tab2_4.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Table 2.4 p. 64; See also Expl2_11.m <o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/peaks.m"><span
+class=SpellE><span class=GramE><tt>peaks.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+used in Tab2_1.m<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/sysanaly.m"><span
+class=SpellE><span class=GramE><tt>sysanaly.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+used in Expl2_10.m<o:p></o:p></span></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2><a name=c3><span style='font-family:"Courier New"'>Chapter 3</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/ExplX3_1.m"><tt>ExplX3_1.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>EXTRA</b> example: Exact freq <span class=SpellE>resp</span> and RGA of MIMO
+plant with delay<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl3_3.m"><tt><span
+lang=PT-BR style='mso-ansi-language:PT-BR'>Expl3_<span class=GramE>3.</span>m</span></tt></a></span><span
+lang=PT-BR style='font-size:10.0pt;font-family:"Courier New";mso-ansi-language:
+PT-BR'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=SpellE>Example</span> 3.3 p.73<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl3_11.m"><tt>Expl3_11.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 3.11 p.86<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl3_17.m"><tt>Expl3_17.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 3.17 p.96<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig3_6.m"><tt>Fig3_6.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>3.6 p.74</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig3_14.m"><tt>Fig3_14.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>3.14 p.101</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Rem3_372.m"><tt>Rem3_372</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Remark 3 in section 3.7.2, S-KS Design p.102<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec3_7_1.m"><tt>Sec3_7_1.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 3.7.1 Motivating robustness example no. 1, Spinning Satellite p.98<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec3_7_2.m"><tt>Sec3_7_2.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 3.7.2 Motivating robustness example no. 2, Distillation Process p.100<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/rga.m"><span
+class=SpellE><tt>rga.m</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get <span class=GramE>RGA(</span>G)<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/vrga.m"><span
+class=SpellE><tt>vrga.m</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get <span class=GramE>RGA(</span>G) when G is varying matrix<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/condmin.m"><span
+class=SpellE><span class=GramE><tt>condmin.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get minimized condition number<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/condmini.m"><span
+class=SpellE><span class=GramE><tt>condmini.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get input minimized condition number<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/condmino.m"><span
+class=SpellE><span class=GramE><tt>condmino.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get output minimized condition number<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/coprimeunc.m"><span
+class=SpellE><span class=GramE><tt>coprimeunc.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function for H-infinity <span class=SpellE>loopshaping</span> design<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c4><span style='font-family:"Courier New"'>Chapter 4</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/izde.m"><span
+class=SpellE><tt>izde.m</tt></span></a>&nbsp; <a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/ozde.m"><span
+class=SpellE><tt>ozde.m</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+functions to compute input and output zero directions<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/ncopfac.m"><span
+class=SpellE><span class=GramE><tt>ncopfac.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function to get normalized <span
+class=SpellE>coprime</span> factors p.124<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl4_5.m"><tt>Expl4_5.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 4.5 p.130<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl4_13.m"><tt>Expl4_13.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 4.13 p.140 - Compute pole and zero directions<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec4_10.m"><tt>Sec4_10.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 4.10 System norms, calculating examples p.156<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c5><span style='font-family:"Courier New"'>Chapter 5</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/ExplX5_1.m"><tt>ExplX5_1.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>EXTRA</b> Example; Illustrates <span class=SpellE>Bode's</span> <span
+class=SpellE>sens</span>. integral; p. 170<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl5_6_7.m"><tt>Expl5_6_7.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Examples <span class=GramE>5.6 p.184</span> and 5.7 p.187<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl5_9.m"><tt>Expl5_9.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 5.9 p.196<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl5_12.m"><tt>Expl5_12.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 5.12 p.200<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl5_13.m"><tt>Expl5_13.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 5.13 p.202<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl5_13s.m"><tt>Expl5_13s.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Utility <span class=SpellE>simulink</span> model for Example 5.13<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig5_4.m"><tt>Fig5_4.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>5.4 p.170</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig5_6.m"><tt>Fig5_6.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>5.6 p.183</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig5_7.m"><tt>Fig5_7.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figures <span class=GramE>5.7 p.185</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig5_9.m"><tt>Fig5_9.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figures <span class=GramE>5.9 p.190</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec5_15_2.m"><tt>Sec5_15_2.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 5.15.2 Room heating p.211<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec5_15_3.m"><tt>Sec5_15_3.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 5.15.3 Neutralization process p.213<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/rhmodel.m"><span
+class=SpellE><span class=GramE><tt>rhmodel.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Utility <span class=SpellE>simulink</span> model for Room heating example<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/RoomHeat.m"><span
+class=SpellE><tt>RoomHeat.m</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 5.16.2 Application: Room heating p.211<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/1st_edition/matlab_m/NeutProc.m"><span
+class=SpellE><tt>NeutProc.m</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 5.16.3 Application: Neutralizing process p.213<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c6></a><span style='font-family:"Courier New"'>Chapter 6<o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl6_3.m"><tt>Expl6_3.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 6.3 p.227<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl6_9.m"><tt>Expl6_9.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 6.9 p.245<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl6_11.m"><tt>Expl6_11.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 6.11 p.250<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl6_12.m"><tt>Expl6_12.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 6.12 p.251<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/skrpmu.m"><span
+class=SpellE><span class=GramE><tt>skrpmu.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to calculate skewed-<span class=SpellE>mu</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c7><span style='font-family:"Courier New"'>Chapter 7</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl7_6.m"><tt>Expl7_6.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 7.6 p.269<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl7_7.m"><tt>Expl7_7.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 7.7 p.271<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl7_9.m"><tt>Expl7_9.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 7.9 p.277<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl7_11.m"><tt>Expl7_11.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 7.11 p.283<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig7_2.m"><tt>Fig7_2.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>7.2 p.266</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig7_8.m"><tt>Fig7_8.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>7.8 p.272</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/maxrad.m"><span
+class=SpellE><span class=GramE><tt>maxrad.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get maximum radius, used in<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Expl7_7.m for optimization<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/uncreg.m"><span
+class=SpellE><span class=GramE><tt>uncreg.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get uncertainty region, used<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>in</span> Expl7_7.m and Fig7_2.m<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c8><span style='font-family:"Courier New"'>Chapter 8</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl8_9.m"><tt>Expl8_9.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 8.9 p.314<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl8_10.m"><tt>Expl8_10.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 8.10 p.315<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig8_15.m"><tt>Fig8_15.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure 8.15 p.323 and Table 8.1 p.325<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Fig8_16.m"><tt>Fig8_16.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Figure <span class=GramE>8.16 p.330</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec8_124.m"><tt>Sec8_124.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 8.12.4, DK-iteration, p.330,<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>and</span> Table 8.2 p.331<o:p></o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c9><span style='font-family:"Courier New"'>Chapter 9</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl9_1.m"><tt>Expl9_1.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 9.1 p.347<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl9_3.m"><tt>Expl9_3.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 9.3 p.368<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/coprimeunc.m"><span
+class=SpellE><span class=GramE><tt>coprimeunc.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function for H-infinity loop shaping design<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+See Table 9.2 p.379<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/hinf2dof.m"><span
+class=GramE><tt>hinf2dof.m</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2-DOF controller, Table 9.3 p.375<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For example, see Aero2DOF.m for Section 13.3.3<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c10><span style='font-family:"Courier New"'>Chapter 10</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl10_10.m"><tt>Expl10_10.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 10.10 p.413<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl10_12.m"><tt>Expl10_12.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 10.12 p.425<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl10_15.m"><tt>Expl10_15.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 10.15 p.432<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Expl10_23.m"><tt>Expl10_23.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Example 10.23 p.451<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c11><span style='font-family:"Courier New"'>Chapter 11</span></a><span
+style='font-family:"Courier New"'><o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec11_5.m"><tt>Sec11_5.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section <span class=GramE>11.5 p.459</span><o:p></o:p></span></p>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec11_81.m"><tt>Sec11_81.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 11.8.1 p.463<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/aero0.mat"><span
+class=GramE><tt>aero0.mat</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Aero-engine model data file, used in Sec11_81.m <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec11_82.m"><tt>Sec11_82.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 11.8.2 p.466<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/aeroK.mat"><span
+class=SpellE><span class=GramE><tt>aeroK.mat</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Controller model data file, used in Sec11_62.m <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-family:"Courier New"'>Chapter 11<o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec12_42.m"><tt>Sec12_42.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 12.4.2 p.487<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><a
+name=c12><span style='font-family:"Courier New"'>Chapter 1</span></a><span
+style='font-family:"Courier New"'>3<o:p></o:p></span></h2>
+
+<pre><o:p>&nbsp;</o:p></pre><pre><o:p>&nbsp;</o:p></pre>
+
+<h4 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-family:"Courier New"'>13.2 Helicopter case study <o:p></o:p></span></h4>
+
+<pre><o:p>&nbsp;</o:p></pre><pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec13_2.m"><tt>Sec13_2.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 13.2<span class=GramE>&nbsp; Helicopter</span> case study p.493<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/db.m"><span
+class=SpellE><span class=GramE><tt>db.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get db value, used in Sec13_2.m<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h4 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-family:"Courier New"'>13.3<span class=GramE>&nbsp; Aero</span>-engine
+case study <o:p></o:p></span></h4>
+
+<pre><o:p>&nbsp;</o:p></pre><pre><o:p>&nbsp;</o:p></pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec13_32.m"><tt>Sec13_32.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 13.3.2 Aero-engine case study,<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Control structure design p.502<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec13_33.m"><tt>Sec13_33.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 13.3.3 Aero-engine case study, <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Two degrees-of-freedom <span class=SpellE>H_inf</span> design p.506<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Aero2DOF.m"><tt>Aero2DOF.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=SpellE>H_inf</span> 2-DoF controller design example<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>see</span> section 13.3.3 on p.506 and Table 9.3 on p.375<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/aero1.mat"><span
+class=GramE><tt>aero1.mat</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Aero-engine model part 1, used in Sec13_32.m and Sec13_33.m<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/aero2.mat"><span
+class=GramE><tt>aero2.mat</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Aero-engine model part 2, used in Sec13_32.m<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/align.m"><span
+class=SpellE><span class=GramE><tt>align.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+function to get real alignment, used in Sec13_33.m<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<h4 style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-family:"Courier New"'>13.4 Distillation case study <o:p></o:p></span></h4>
+
+<pre><o:p>&nbsp;</o:p></pre><pre><o:p>&nbsp;</o:p></pre><pre><tt><u><span
+style='color:blue'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/cola/cola_commands.m"><span
+class=SpellE><span class=GramE>cola_commands.m</span></span> </a></span></u></tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Collection of useful commands for RGA, CLDG, PRGA, singular values, etc.</pre>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>See the other chapters for
+use of the idealized linear two-state LV-model<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+class=GramE><span style='font-size:10.0pt;font-family:"Courier New"'>in</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'> (12.17); see the summary on
+page 492 in the book for details.&nbsp; <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/cola/cola.html">Click
+here</a> for details about the 82 state nonlinear distillation model and <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+class=GramE><span style='font-size:10.0pt;font-family:"Courier New"'>how</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'> to generate the ``full''
+linear model.&nbsp; It is the basis for the following:<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/cola/cola_G4.m"><span
+class=GramE><tt>cola_G4.m</tt></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Generates the linear model in <a
+href="http://www.nt.ntnu.no/users/skoge/book/1st_edition/matlab_m/G4.mat"><tt>G4.mat</tt></a><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/G4.mat"><tt>G4.mat</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+82 state linear model with 6 inputs and 4 outputs, used in Tab12_3.m <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Start MATLAB and write <b>load G4</b> and <b>help cola_G4</b><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Tab13_3.m"><tt>Tab13_3.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Table 13.3, p.510. <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>Generates linear models for various configurations.</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+The basis is G4 (full linear models with 82 states).<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/Sec13_42.m"><tt>Sec13_42.m</tt></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Section 13.4.2, p.512. <o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+This is the 5 state linear LV-model used in the book.<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+It is very similar to the full 82-state model.<o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><a
+href="http://www.nt.ntnu.no/users/skoge/book/2nd_edition/matlab_m/cola/cola_test.m"><span
+class=SpellE><span class=GramE><tt>cola_test.m</tt></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Simulate with nonlinear model and <span class=SpellE>linearize</span><o:p></o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
